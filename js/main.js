@@ -7,7 +7,7 @@ var textarea = document.getElementById("setter"); //textarea
 var terminal = document.getElementById("terminal"); //orders entered
 var historique = []; // Order history
 var valueH = 0;
-var frame = document.getElementsByClassName("container");
+
 var close = document.getElementById("close");
 // frame project
 var back = document.getElementsByClassName("btn-back");
@@ -32,17 +32,6 @@ function initialStartup() {
 }
 
 window.addEventListener("keyup", enterKey);
-close.addEventListener("mousedown", function () {
-  close.src = "img/X2.png";
-});
-close.addEventListener("mouseup", function () {
-  close.src = "img/X.png";
-  frame[0].classList.remove("open");
-  enableProject();
-  addLine("window close", "colored", 10);
-  textarea.focus();
-  playSound(closeFrame, 0.5);
-});
 
 //init
 textarea.value = "";
@@ -122,9 +111,7 @@ function testValue(test) {
       addLine("My email :  " + email, "colored", 100);
       break;
     case "works":
-      addLine("window open", "colored", 10);
-      frame[0].classList.add("open");
-      playSound(openFrame, 0.5);
+      addLine("<<TODO>>", "colored", 10);
       break;
     case "credits":
       boucleWrite(credits, "colored", 120);
@@ -223,101 +210,4 @@ function openTab(link, time) {
   setTimeout(function () {
     window.open(link, "_blank");
   }, time);
-}
-
-//***********************//
-//      Interact JS      //
-//***********************//
-
-//change top and bottom text frame
-var topF = document.querySelector("#toped");
-var bottom = document.querySelector(".b1");
-
-interact(".resize-drag")
-  .draggable({
-    ignoreFrom: ".undrag",
-    onmove: window.dragMoveListener,
-    restrict: {
-      restriction: "parent",
-      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-    }
-  })
-  .pointerEvents({
-    ignoreFrom: ".undrag"
-  })
-  .resizable({
-    inertia: true,
-
-    // resize from all edges and corners
-    edges: { left: true, right: true, bottom: true, top: true },
-
-    // keep the edges inside the parent
-    restrictEdges: {
-      outer: "parent",
-      endOnly: true
-    },
-
-    // minimum size
-    restrictSize: {
-      min: { width: 560, height: 500 }
-    },
-
-    inertia: true
-  })
-  .on("resizemove", function (event) {
-    var target = event.target,
-      x = parseFloat(target.getAttribute("data-x")) || 0,
-      y = parseFloat(target.getAttribute("data-y")) || 0;
-
-    // update the element's style
-    target.style.width = event.rect.width + "px";
-    target.style.height = event.rect.height + "px";
-
-    // translate when resizing from top or left edges
-    x += event.deltaRect.left;
-    y += event.deltaRect.top;
-
-    target.style.webkitTransform = target.style.transform =
-      "translate(" + x + "px," + y + "px)";
-
-    target.setAttribute("data-x", x);
-    target.setAttribute("data-y", y);
-    //target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
-  });
-
-function dragMoveListener(event) {
-  var target = event.target,
-    // keep the dragged position in the data-x/data-y attributes
-    x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx,
-    y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
-  // translate the element
-  target.style.webkitTransform = target.style.transform =
-    "translate(" + x + "px, " + y + "px)";
-
-  // update the posiion attributes
-  target.setAttribute("data-x", x);
-  target.setAttribute("data-y", y);
-}
-
-// this is used later in the resizing and gesture demos
-window.dragMoveListener = dragMoveListener;
-
-// project open
-for (let j = 0; j < project.length; j++) {
-  back[j].addEventListener("mousedown", function () {
-    enableProject();
-  });
-  projectLink[j].addEventListener("mousedown", function () {
-    let u = document.getElementById(projectLink[j].dataset.directionProject);
-    u.classList.add("prez-show");
-    topF.innerHTML = projectLink[j].dataset.top;
-  });
-}
-
-function enableProject() {
-  for (let i = 0; i < project.length; i++) {
-    project[i].classList.remove("prez-show");
-    topF.innerHTML = "My Works";
-  }
 }

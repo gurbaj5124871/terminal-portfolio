@@ -11,7 +11,7 @@ function $(elid) {
   }
   
   function nl2br(txt) {
-    return txt.replace(/\n/g, '');// <br> avant entre ''
+    return txt.replace(/\n/g, '');
   }
   
   function writeit(from, e) {
