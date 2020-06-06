@@ -32,7 +32,6 @@ function initialStartup() {
 }
 
 window.addEventListener("keyup", enterKey);
-//close vbtn frame
 close.addEventListener("mousedown", function () {
   close.src = "img/X2.png";
 });
@@ -44,17 +43,6 @@ close.addEventListener("mouseup", function () {
   textarea.focus();
   playSound(closeFrame, 0.5);
 });
-
-// //START ADD Text un the console
-// console.log(
-//   "%cWelcome to the",
-//   "color: purple; font-weight: bold; font-size: 30px;"
-// );
-// console.log(
-//   "%cTerminal Portfolio",
-//   "color: magenta; font-weight: bold; font-size: 24px;"
-// );
-// console.log("%c Password : " + password, "color: cyan");
 
 //init
 textarea.value = "";
@@ -91,8 +79,14 @@ function enterKey(e) {
     if (e.keyCode == 13) {
       historique.push(cmd.innerHTML);
       valueH = historique.length;
-      addLine("root> " + cmd.innerHTML, "no-animation", 0);
-      testValue(cmd.innerHTML.toLowerCase());
+      addLine("root> " + cmd.innerHTML, "no-animation", 0, true);
+      if(cmd.innerHTML.toLowerCase() === 'bye') {
+        cmd.innerHTML = "";
+        textarea.value = "";
+        window.open(location, '_self').close();
+      } else {
+        testValue(cmd.innerHTML.toLowerCase());
+      }
       cmd.innerHTML = "";
       textarea.value = "";
     }
@@ -140,12 +134,6 @@ function testValue(test) {
       pw = true;
       playSound(passwordEnter, 0.5);
       break;
-    // case "download":
-    //   addLine("download start in 1 s", "colored", 0);
-    //   setTimeout(function() {
-    //     window.open(download, "_blank");
-    //   }, 1000);
-    //   break;
 
     //social link
     case "social github":
@@ -153,95 +141,16 @@ function testValue(test) {
       break;
     case "social linkedin":
       openTab(linkedin, 1000);
-    //   break;
-    // case "social behance":
-    //   openTab(behance, 1000);
-    //   break;
-    /*
-    case "social twitter":
-      openTab(twitter, 1000);
       break;
+    case "social angel":
+        openTab(angel, 1000);
+        break;  
     case "social instagram":
       openTab(instagram, 1000);
-      break;*/
-
-    //color
-    // case "color":
-    //   addLine(
-    //     "Enter color with a number 0 to 8 for change the apparence",
-    //     "colored",
-    //     0
-    //   );
-    //   break;
-    // case "color 0":
-    //   document.body.classList = "";
-    //   addLine("Reset :(", "colored", 100);
-    //   break;
-    // case "color 1":
-    //   document.body.classList = "color1";
-    //   addLine("HOoooo :O", "colored", 100);
-    //   break;
-    // case "color 2":
-    //   document.body.classList = "color2";
-    //   addLine("HOooooo :O", "colored", 100);
-    //   break;
-    // case "color 3":
-    //   document.body.classList = "color3";
-    //   addLine("HOoooooo :O", "colored", 100);
-    //   break;
-    // case "color 4":
-    //   document.body.classList = "color4";
-    //   addLine("HOooooooo :O", "colored", 100);
-    //   break;
-    // case "color 5":
-    //   document.body.classList = "color5";
-    //   addLine("HOoooooooo :O", "colored", 100);
-    //   break;
-    // case "color 6":
-    //   document.body.classList = "color6";
-    //   addLine("HOooooooooo :O", "colored", 100);
-    //   break;
-    // case "color 7":
-    //   document.body.classList = "color7";
-    //   addLine("HOoooooooooo :O", "colored", 100);
-    //   break;
-    // case "color 8":
-    //   document.body.classList = "color8";
-    //   addLine("HOooooooooooo :O", "colored", 100);
-    //   break;
-    // case "clear":
-    //   setTimeout(function() {
-    //     terminal.innerHTML = '<a id="before"></a>';
-    //     before = document.getElementById("before");
-    //   }, 1);
-    //   break;
-    // case "shutdown":
-    //   setTimeout(function() {
-    //     terminal.innerHTML = '<a id="before"></a>';
-    //     before = document.getElementById("before");
-    //   }, 1);
-    //   getter.classList.add("shutdown");
-    //   var x = document.getElementById("setter");
-    //   x.parentNode.removeChild(x);
-
-    //   playSound(closeS, 0.5);
-
-    //   cmd.innerHTML = "";
-    //   textarea.value = "";
-    //   document.body.classList = "shutdown";
-    //   addLine("Press F5 to restart the machin", "white", 2500);
-    //   break;
+      break;
     case "ping":
       addLine("Pong !", "colored", 100);
       break;
-    // case "historic":
-    //   addLine("<br>", "", 0);
-    //   boucleWrite(historique, "colored", 120);
-    //   addLine("<br>", "", 120 * historique.length + 50);
-    //   break;
-    // case "":
-    //   // addLine("", 100)
-    //   break
     default:
       addLine("Command not recognized. Test the command 'help'", "error", 100);
       playSound(wrongCommand, 0.5);
@@ -255,11 +164,8 @@ function boucleWrite(name, classe, time) {
   });
 }
 
-function addLine(text, classe, time, prefixRoot) {
+function addLine(text, classe, time) {
   var t = "";
-  if (prefixRoot === true) {
-    t += "root> "
-  }
 
   for (let i = 0; i < text.length; i++) {
     if (text.charAt(i) == " " && text.charAt(i + 1) == " ") {

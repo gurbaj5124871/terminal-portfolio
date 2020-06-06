@@ -92,7 +92,7 @@ b {
   opacity: 0;
 }
 #getter::before {
-  content: "";
+  content: "root>";
 }
 #getter.password::before {
   content: "Password:";

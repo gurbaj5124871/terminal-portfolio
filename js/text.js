@@ -48,6 +48,7 @@ help = [
   '<span class="command">credits</span>        Show the credits',
   // '<span class="command">secret</span>         z?◙░▓_da~▒_*? <span class="indice">[' +password + "]<span>",
   // '<span class="command">download</span>       Download TerminalPortfolio',
+  '<span class="command">bye</span>            Close terminal session',
   "<br>"
 ];
 //Link for Download, Please don't change this
@@ -100,6 +101,8 @@ social = [
   'linkedin       <a href="' + linkedin + '" target="_blank">' + linkedin + "</a>",
   'angel          <a href="' + angel + '" target="_blank">' + angel + "</a>",
   'instagram      <a href="' + instagram + '" target="_blank">'+ instagram + '</a>',
+  "<br>",
+  'Type: <span class="highlight">social {socialOption}</span> to visit <span class="highlight">or</span> Click on of the above links.',
   "<br>"
 ];
 
