@@ -42,6 +42,11 @@ b {
   margin-top: 50vh;
   transform: translateY(-50%);
 }
+.animation:hover {
+  -ms-transform: scale(1.02); /* IE 9 */
+  -webkit-transform: scale(1.02); /* Safari 3-8 */
+  transform: scale(1.02); 
+}
 
 
 @keyframes hide {
