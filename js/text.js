@@ -102,7 +102,7 @@ social = [
   'angel          <a href="' + angel + '" target="_blank">' + angel + "</a>",
   'instagram      <a href="' + instagram + '" target="_blank">'+ instagram + '</a>',
   "<br>",
-  'Type: <span class="command">social &lt;socialOption&gt;</span> to visit <span class="command">or</span> Click on of the above links.',
+  'Type: <span class="command">social &lt;socialOption&gt;</span> to visit <span class="command">or</span> click on the above links.',
   "<br>"
 ];
 

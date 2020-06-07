@@ -28,7 +28,7 @@ function initialStartup() {
     boucleWrite(run, "", 120);
     document.querySelector(".animation").remove();
     textarea.focus();
-  }, 7800);
+  }, 5800);
 }
 
 window.addEventListener("keyup", enterKey);
