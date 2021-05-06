@@ -76,7 +76,7 @@ about = [
   "<br>",
   'My Name is </span><span class="highlight">Gurbaj Singh</span>. I am a Software and Data Engineer with experience of',
   "working in various product based startups of about " + workingExperienceStr,
-  'specialized in <span class="highlight">Backend</span>,  <span class="highlight">Data</span> and <span class="highlight">Devops</span> with intermediate level of frontend.',
+  'specialized in <span class="highlight">Backend</span>, <span class="highlight">Data</span> and <span class="highlight">Devops</span> with intermediate level of frontend.',
   "<br>",
   "• I am a database enthusiast (my currently favorite is cassandra)",
   "• A startup fanatic (if you feel you have an awesome idea reach me out)",
