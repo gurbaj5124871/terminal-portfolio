@@ -91,7 +91,7 @@ about = [
 var github = "https://github.com/gurbaj5124871";
 var linkedin = "https://www.linkedin.com/in/gurbaj-singh-b64198b5/";
 var angel = "https://angel.co/u/gurbaj-singh-2";
-var instagram = "https://www.instagram.com/aida_hi__/";
+var instagram = "https://www.instagram.com/gurbajgram";
 
 //social
 social = [
