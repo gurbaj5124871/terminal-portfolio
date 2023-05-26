@@ -1,18 +1,18 @@
-var before = document.getElementById("before");
-var getter = document.getElementById("getter");
-var pw = false;
+const before = document.getElementById("before");
+const getter = document.getElementById("getter");
+let pw = false;
 let psw = false;
-var cmd = document.getElementById("writer"); //zone writing
-var textarea = document.getElementById("setter"); //textarea
-var terminal = document.getElementById("terminal"); //orders entered
-var historique = []; // Order history
-var valueH = 0;
+const cmd = document.getElementById("writer"); //zone writing
+const textarea = document.getElementById("setter"); //textarea
+// var terminal = document.getElementById("terminal"); //orders entered
+const historique = []; // Order history
+let valueH = 0;
 
-var close = document.getElementById("close");
+var close = document.getElementById("close"); // don't change for bye to reload from start
 // frame project
-var back = document.getElementsByClassName("btn-back");
-var project = document.getElementsByClassName("prez-2");
-var projectLink = document.getElementsByClassName("btn-direction");
+// var back = document.getElementsByClassName("btn-back");
+// var project = document.getElementsByClassName("prez-2");
+// var projectLink = document.getElementsByClassName("btn-direction");
 
 document.getElementById("start").addEventListener("mouseup", initialStartup);
 
@@ -69,10 +69,10 @@ function enterKey(e) {
       historique.push(cmd.innerHTML);
       valueH = historique.length;
       addLine("root> " + cmd.innerHTML, "no-animation", 0, true);
-      if(cmd.innerHTML.toLowerCase() === 'bye') {
+      if (cmd.innerHTML.toLowerCase() === "bye") {
         cmd.innerHTML = "";
         textarea.value = "";
-        window.open(location, '_self').close();
+        window.open(location, "_self").close();
       } else {
         testValue(cmd.innerHTML.toLowerCase());
       }
@@ -100,6 +100,9 @@ function testValue(test) {
   switch (test.toLowerCase()) {
     case "help":
       boucleWrite(help, "", 100);
+      break;
+    case "workspace":
+      openTab(workspace, 1000);
       break;
     case "about":
       boucleWrite(about, "colored margin", 120);
@@ -130,10 +133,13 @@ function testValue(test) {
       openTab(linkedin, 1000);
       break;
     case "social angel":
-        openTab(angel, 1000);
-        break;  
+      openTab(angel, 1000);
+      break;
     case "social instagram":
       openTab(instagram, 1000);
+      break;
+    case "social workspace":
+      openTab(workspace, 1000);
       break;
     case "ping":
       addLine("Pong !", "colored", 100);
@@ -164,14 +170,14 @@ function addLine(text, classe, time) {
   }
 
   setTimeout(function () {
-    var txt = document.createElement("p");
+    const txt = document.createElement("p");
     txt.innerHTML = t;
     txt.className = classe;
 
     before.parentNode.insertBefore(txt, before);
 
     window.scrollTo(0, document.body.offsetHeight);
-    playAlea()
+    playAlea();
   }, time);
 }
 
@@ -183,8 +189,8 @@ function playSound(audio, vol) {
 
 // function play sound type alea
 function playAlea() {
-  var alea = Math.floor(Math.random() * Math.floor(4));
-  var vl = 0.5;
+  const alea = Math.floor(Math.random() * Math.floor(4));
+  const vl = 0.5;
 
   switch (alea) {
     case 0:

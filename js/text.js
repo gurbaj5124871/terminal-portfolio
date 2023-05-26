@@ -1,21 +1,25 @@
 //Text write when the page was load
-var currentDate = new Date();
+const currentDate = new Date();
+
 function yearsDiff(d1, d2) {
-  let date1 = new Date(d1);
-  let date2 = new Date(d2);
-  let yearsDiff = date2.getFullYear() - date1.getFullYear();
+  const date1 = new Date(d1);
+  const date2 = new Date(d2);
+  const yearsDiff = date2.getFullYear() - date1.getFullYear();
+
   return yearsDiff;
 }
 
 function monthsDiff(d1, d2) {
-  let date1 = new Date(d1);
-  let date2 = new Date(d2);
-  let years = yearsDiff(d1, d2);
-  let months = years * 12 + (date2.getMonth() - date1.getMonth());
+  const date1 = new Date(d1);
+  const date2 = new Date(d2);
+
+  const years = yearsDiff(d1, d2);
+  const months = years * 12 + (date2.getMonth() - date1.getMonth());
+
   return months;
 }
 
-run = [
+const run = [
   `<span class="indice">$ </span><span class="colored">cd ~/portfolios/${currentDate.getFullYear()}</span>`,
   '<span class="indice">$ </span><span class="colored">./gurbaj-portfolio.sh</span>',
   "┌=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=┐",
@@ -35,42 +39,39 @@ run = [
 ];
 
 //password
-var password = "Linux";
+const password = "Linux";
 
 // Text for the command 'Help'
-help = [
+const help = [
   "<br>",
+  '<span class="command">workspace</span>      Visit new portfolio which is more expressive and better at showcasing my work',
   '<span class="command">about</span>          Learn more about me',
   // '<span class="command">works</span>          Show my works',
   '<span class="command">social</span>         Displays social networks',
   '<span class="command">contact</span>        Get my email',
   '<span class="command">credits</span>        Show the credits',
   // '<span class="command">secret</span>         z?◙░▓_da~▒_*? <span class="indice">[' +password + "]<span>",
-  // '<span class="command">download</span>       Download TerminalPortfolio',
   '<span class="command">bye</span>            Close terminal session',
   "<br>",
 ];
-//Link for Download, Please don't change this
-var download = "http://valentinsld.fr/Terminal/TerminalPortfolio.rar";
+
 // email
-var email =
+const email =
   '<a href="mailto:singh.gurbaj5124871@gmail.com">singh.gurbaj5124871@gmail.com</a>';
 
-// Link to MyWebSite, Please don't change this
-var MyWebSite = "http://valentinsld.fr/";
 // Text for the command 'about'
-var startDateOfWorking = new Date(2017, 00, 01); // 01 Jan 2017
+const startDateOfWorking = new Date(2017, 00, 01); // 01 Jan 2017
 
-var workingExperience = new Date();
-var workingMonths = monthsDiff(startDateOfWorking, workingExperience);
-var noOfYears = workingMonths / 12;
-var noOfMonths = workingMonths % 12;
-var workingExperienceStr = `${parseInt(noOfYears)} years`;
+const workingExperience = new Date();
+const workingMonths = monthsDiff(startDateOfWorking, workingExperience);
+const noOfYears = workingMonths / 12;
+const noOfMonths = workingMonths % 12;
+let workingExperienceStr = `${parseInt(noOfYears)} years`;
 if (noOfMonths > 0) {
   workingExperienceStr += ` ${noOfMonths} months`;
 }
 
-about = [
+const about = [
   "<br>",
   "Hello there !",
   "<br>",
@@ -88,40 +89,34 @@ about = [
 ];
 
 //link social
-var github = "https://github.com/gurbaj5124871";
-var linkedin = "https://www.linkedin.com/in/gurbaj-singh-b64198b5/";
-var angel = "https://angel.co/u/gurbaj-singh-2";
-var instagram = "https://www.instagram.com/gurbajgram";
+const github = "https://github.com/gurbaj5124871";
+const linkedin = "https://www.linkedin.com/in/gurbaj-singh-b64198b5/";
+const angel = "https://angel.co/u/gurbaj-singh-2";
+const instagram = "https://www.instagram.com/gurbajgram";
+const workspace = "https://workspace.gurbaj.dev";
 
 //social
-social = [
+const social = [
   "<br>",
-  'github         <a href="' + github + '" target="_blank">' + github + "</a>",
-  'linkedin       <a href="' +
-    linkedin +
-    '" target="_blank">' +
-    linkedin +
-    "</a>",
-  'angel          <a href="' + angel + '" target="_blank">' + angel + "</a>",
-  'instagram      <a href="' +
-    instagram +
-    '" target="_blank">' +
-    instagram +
-    "</a>",
+  `github         <a href="${github}" target="_blank"> ${github} </a>`,
+  `linkedin       <a href="${linkedin}" target="_blank"> ${linkedin} </a>`,
+  `angel        <a href="${angel}" target="_blank"> ${angel}</a>`,
+  `instagram    <a href="${instagram}" target="_blank"> ${instagram}</a>`,
+  `workspace    <a href="${workspace}" target="_blank"> ${workspace}</a>`,
   "<br>",
   'Type: <span class="command">social &lt;socialOption&gt;</span> to visit <span class="command">or</span> click on the above links.',
   "<br>",
 ];
 
 //open windows
-var openWindow = "new open window";
+const openWindow = "new open window";
 
 //works
-var worksOpen = "works open";
-var worksClos = "works close";
+const worksOpen = "works open";
+const worksClos = "works close";
 
 //credits
-credits = [
+const credits = [
   "<br>",
   'All credits to <a href="https://www.behance.net/valentinsld" target="_blank">Valentin SLD</a> for designing this portfolio.',
   "If you loved his work, do support him or better just hire him.",
@@ -141,16 +136,16 @@ secret = [
 ];
 
 //audio
-var start = new Audio("sounds/start.mp4");
-var closeFrame = new Audio("sounds/CloseWindows.wav");
-var openFrame = new Audio("sounds/OpenWindow.wav");
-var wrongCommand = new Audio("sounds/WrongCommand.wav");
-var passwordEnter = new Audio("sounds/Password.wav");
-var wrongPassword = new Audio("sounds/WrongPassword.wav");
-var goodPassword = new Audio("sounds/GoodPassword.wav");
-var closeS = new Audio("sounds/end.mp4");
-var type1 = new Audio("sounds/type1.wav");
-var type2 = new Audio("sounds/type2.wav");
-var type3 = new Audio("sounds/type3.wav");
-var type4 = new Audio("sounds/type4.wav");
-var type5 = new Audio("sounds/type5.wav");
+const start = new Audio("sounds/start.mp4");
+const closeFrame = new Audio("sounds/CloseWindows.wav");
+const openFrame = new Audio("sounds/OpenWindow.wav");
+const wrongCommand = new Audio("sounds/WrongCommand.wav");
+const passwordEnter = new Audio("sounds/Password.wav");
+const wrongPassword = new Audio("sounds/WrongPassword.wav");
+const goodPassword = new Audio("sounds/GoodPassword.wav");
+const closeS = new Audio("sounds/end.mp4");
+const type1 = new Audio("sounds/type1.wav");
+const type2 = new Audio("sounds/type2.wav");
+const type3 = new Audio("sounds/type3.wav");
+const type4 = new Audio("sounds/type4.wav");
+const type5 = new Audio("sounds/type5.wav");
